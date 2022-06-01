@@ -1,0 +1,49 @@
+<div class="column is-7">
+    <h2 class="title is-2">List Customers</h2>
+    <div class="container">
+        <table id="example" class="table is-fullwidth">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th align="center">Edit</th>
+                    <th align="center">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for client in clients %}
+                <tr>
+                    <td>
+                        <span>{{ client.full_name }}</span>
+                    </td>
+                    <td>
+                        <span>{{ client.email }}</span>
+                    </td>
+                    <td align="center">
+                        <a href="{% url 'crud:edit' client.id %}">
+                            <span class="icon is-small">
+                                <i class="fas fa-file-pen"></i>
+                            </span>
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="{% url 'crud:delete' client.id %}">
+                            <span class="icon is-small">
+                                <i class="fas fa-trash-can"></i>
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th align="center">Edit</th>
+                    <th align="center">Delete</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

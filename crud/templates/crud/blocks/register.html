@@ -1,0 +1,55 @@
+<div class="column is-4">
+    {% if client %}
+        <h2 class="title is-2">Update Client</h2>
+    {% else %}
+        <h2 class="title is-2">Register Client</h2>
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        {% if client %}
+            <div class="field">
+                <label class="label">ID</label>
+                <div class="control has-icons-left">
+                    <input name="id" class="input is-success" type="text" value="{{ client.id }}" disabled>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-fingerprint"></i>
+                    </span>
+                </div>
+            </div>
+        {% endif %}
+        <div class="field">
+            <label class="label">Full Name</label>
+            <div class="control has-icons-left">
+                <input name="full_name" class="input is-success" type="text" placeholder="Text input" value="{{ client.full_name }}" required>
+                <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                </span>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Email</label>
+            <div class="control has-icons-left has-icons-right">
+                <input name="email" class="input is-success" type="email" placeholder="Email input" value="{{ client.email }}" required>
+                <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                </span>
+            </div>
+        </div>
+        <div class="field is-grouped">
+            <div class="control">
+                {% if client %}
+                    <button type="submit" class="button is-link">Update</button>
+                {% else %}
+                    <button type="submit" class="button is-link">Register</button>
+                {% endif %}
+            </div>
+            <div class="control">
+                <button type="reset" class="button is-link is-light" onclick="location.href = '{% url 'crud:dashboard' %}'">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="column is-1">
+
+</div>
